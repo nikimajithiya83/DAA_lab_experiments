@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int matrixChainMultiplication(const vector<int> &p) {
+    int n = p.size();
+    int m = n - 1;
+    vector<vector<int>> dp(m + 1, vector<int>(m + 1, 0));
+
+    for (int L = 2; L <= m; L++) {
+        for (int i = 1; i <= m - L + 1; i++) {
+            int j = i + L - 1;
+            dp[i][j] = INT_MAX;
+            for (int k = i; k < j; k++) {
+                int cost = dp[i][k] + dp[k + 1][j] + p[i - 1] * p[k] * p[j];
+                dp[i][j] = min(dp[i][j], cost);
+            }
+        }
+    }
+    return dp[1][m];
+}
+
+int main() {
+    vector<int> p = {10, 20, 30, 40, 30};
+    cout << matrixChainMultiplication(p);
+    return 0;
+}
