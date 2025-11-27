@@ -1,0 +1,18 @@
+//Exponential Function with O(N) using Divide and Conquer Approach
+long long powerDC_ON(long long x, int n) {
+    if (n == 0) return 1;
+    if (n == 1) return x;
+
+    int half = n / 2;
+    
+    // Recursive calls repeated → inefficient
+    long long left = powerDC_ON(x, half);
+    long long right = powerDC_ON(x, n - half);
+
+    return left * right;
+}
+
+int main() {
+    cout << powerDC_ON(3, 10); 
+}
+
