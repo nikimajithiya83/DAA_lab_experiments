@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int size;
+    cout<<"Enter the number of elements: ";
+    cin>>size;
+    int arr[size];
+    for(int i=0; i<size; i++){
+        cout<<"Enter the element: ";
+        cin>>arr[i];
+    }
+    int i;
+    for(i=0;i<size;i++){
+        int min_index=i;
+        for(int j=i+1;j<size;j++){
+            if(arr[min_index]>arr[j]){
+                min_index=j;
+            }
+        }
+        if(i!=min_index){
+            int temp=arr[min_index];
+            arr[min_index]=arr[i];
+            arr[i]=temp;
+        }
+    }
+    cout<<"The sorted array is: ";
+    for(i=0;i<size;i++){
+        cout<<arr[i]<<" ";
+    }
+        return 0;
+
+}
+
