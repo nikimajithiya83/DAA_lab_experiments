@@ -1,0 +1,17 @@
+//Exponential Function with O(logN) using Divide and Conquer Approach
+long long powerFast(long long x, int n) {
+    if (n == 0) return 1;
+    if (n == 1) return x;
+
+    long long half = powerFast(x, n / 2);
+
+    if (n % 2 == 0) {
+        return half * half;
+    } else {
+        return half * half * x;
+    }
+}
+
+int main() {
+    cout << powerFast(2, 5); 
+}
